@@ -6,17 +6,17 @@
 </head>
 
 <body onLoad="self.print()">
-  <div class="receipt" width: "56mm;">
-    <div id="header table-responsive">
+  <div class="receipt">
+    <div id="header">
       <%= render "spree/admin/invoice/receipt_header" %>
     </div>
 
     <div class="wrapper">
-      <div class="line_items table-responsive">
+      <div class="line_items">
         <%= render "spree/admin/invoice/line_items_invoice" %>
       </div>
       <!--<div class="spacer"> &nbsp;</div>-->
-      <div class="totals table-responsive">
+      <div class="totals">
         <%= render "spree/admin/invoice/totals_receipt" %>
       </div>
     </div>

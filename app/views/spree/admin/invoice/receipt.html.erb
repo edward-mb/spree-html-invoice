@@ -7,20 +7,19 @@
 
 <body onLoad="self.print()">
   <div class="receipt">
-    <div id="header">
+    <div id="header table-responsive">
       <%= render "spree/admin/invoice/receipt_header" %>
     </div>
 
     <div class="wrapper">
-      <div class="line_items">
+      <div class="line_items table-responsive">
         <%= render "spree/admin/invoice/line_items_invoice" %>
       </div>
       <!--<div class="spacer"> &nbsp;</div>-->
-      <div class="totals">
+      <div class="totals table-responsive">
         <%= render "spree/admin/invoice/totals_receipt" %>
       </div>
     </div>
   </div>
 </body>
 </html>
-

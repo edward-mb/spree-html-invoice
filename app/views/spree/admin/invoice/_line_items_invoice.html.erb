@@ -7,9 +7,6 @@
     <col class="total"/>
   </colgroup>
   <tr>
-      <td colspan="4" class="cell" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%= item.variant.product.fullname rescue item.variant.product.name %></font></td>
-  </tr>
-  <tr>
     <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="sku bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:sku) %></font></th>
     <!-- <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="desc bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:item_description) %></font></th> -->
     <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="price bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:price) unless @receipt%></font></th>
@@ -17,6 +14,9 @@
     <th align="right" bgcolor="#cccccc" style="background:#cccccc;" class="total bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:total) %></font></th>
   </tr>
   <% @order.line_items.each do |item| %>
+    <tr>
+      <td colspan="3" class="cell"><font face="Arial, Helvetica, sans-serif" size="2"><%= item.variant.product.fullname rescue item.variant.product.name %></font></td>
+    </tr>
     <tr >
       <td class="cell" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=item.variant.sku %></font></td>
       <!-- <td class="cell" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%= item.variant.product.fullname rescue item.variant.product.name %></font></td> -->

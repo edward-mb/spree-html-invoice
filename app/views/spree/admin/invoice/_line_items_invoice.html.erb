@@ -7,6 +7,9 @@
     <col class="total"/>
   </colgroup>
   <tr>
+      <td colspan="4" class="cell" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%= item.variant.product.fullname rescue item.variant.product.name %></font></td>
+  </tr>
+  <tr>
     <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="sku bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:sku) %></font></th>
     <!-- <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="desc bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:item_description) %></font></th> -->
     <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="price bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:price) unless @receipt%></font></th>
@@ -30,8 +33,5 @@
         <td class="cell total" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=number_to_currency(-1 * item.discount * item.quantity) %></font></td>
       </tr>
     <% end %>
-    <tr>
-        <td colspan="3" class="cell" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%= item.variant.product.fullname rescue item.variant.product.name %></font></td>
-    </tr>
   <% end %>
 </table>

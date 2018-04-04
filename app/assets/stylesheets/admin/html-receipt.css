@@ -1,16 +1,23 @@
-@page  {
-	margin-left:1mm;
-	margin-right:1mm;
-	margin-top:1mm;
-	margin-bottom:1mm;
-	 }
+@page
+ {
+		 size:  auto;   /* auto is the initial value */
+		 margin: 0mm;  /* this affects the margin in the printer settings */
+ }
 
-body {
-	font-family:"Trebuchet MS";
-	color:#000000;
-  width: 58mm;
-	margin: 0px;
-}
+ html
+ {
+		 background-color: #FFFFFF;
+		 margin: 0px;  /* this affects the margin on the html before sending to printer */
+ }
+
+ body
+ {
+		 border: solid 1px blue ;
+		 margin: 1mm 1mm 1mm 1mm; /* margin you want for the content */
+		 font-family:"Trebuchet MS";
+		 color:#000000;
+		 width: 58mm;
+ }
 
 
 div#header {
@@ -65,5 +72,5 @@ div.footer {
   width: 100px;
 }
 .footer .cell {
-  width: 220px;
+  width: 219px;
 }

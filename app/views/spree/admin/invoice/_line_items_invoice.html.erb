@@ -1,4 +1,4 @@
-<table cellspacing="0" cellpadding="7" border="0" class="line_items" style="border:solid 1px #cccccc; border-bottom:none; margin:5px 0;" >
+<table cellspacing="0" cellpadding="4" border="0" class="line_items" style="border:solid 1px #cccccc; border-bottom:none; margin:5px 0;" >
   <colgroup>
     <col/>
     <col/>
@@ -8,7 +8,6 @@
   </colgroup>
   <tr>
     <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="sku bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:sku) %></font></th>
-    <!-- <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="desc bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:item_description) %></font></th> -->
     <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="price bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:price) unless @receipt%></font></th>
     <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="qty bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:qty) %> </font></th>
     <th align="right" bgcolor="#cccccc" style="background:#cccccc;" class="total bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:total) %></font></th>
@@ -19,7 +18,6 @@
     </tr>
     <tr >
       <td class="cell" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=item.variant.sku %></font></td>
-      <!-- <td class="cell" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%= item.variant.product.fullname rescue item.variant.product.name %></font></td> -->
       <td class="cell price" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=number_to_currency(item.price) unless @receipt%></font></td>
       <td class="cell qty" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=item.quantity %></font></td>
       <td align="right" class="cell total" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=number_to_currency(item.price * item.quantity) %></font></td>

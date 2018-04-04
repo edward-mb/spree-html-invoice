@@ -1,4 +1,4 @@
-<% buttons = Spree::HtmlInvoice::Config[:print_buttons] || "invoice"
+<% buttons = Spree::HtmlInvoice::Config[:print_buttons] || "invoice, receipt"
    buttons = buttons.split(",").collect{|b| b.strip } %>
 <%  buttons.each do |button| %>
   <li>

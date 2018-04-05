@@ -12,7 +12,7 @@
 
  body
  {
-		 border: solid 1px blue ;
+		 border: solid 1px;
 		 margin: 1mm 1mm 1mm 1mm; /* margin you want for the content */
 		 font-family:"Trebuchet MS";
 		 color:#000000;

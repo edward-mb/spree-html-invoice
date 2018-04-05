@@ -11,19 +11,29 @@
   <tr>
     <td class="info" align="center" style=" font-size: 14px; letter-spacing: 2px; line-height: 1.3; text-align: center; text-transform: uppercase; ">
       <font face="Georgia,"Times New Roman",Times,serif" color="black">
-      <%==Spree.t(:footer_right)%>
+      Tel. <%= @order.ship_address.phone%>
+      </font>
     </td>
   </tr>
-      <tr>
-        <td class="info" align="center" style=" font-size: 14px; letter-spacing: 2px; line-height: 1.3; text-align: center; text-transform: uppercase; ">
-          <font face="Georgia,"Times New Roman",Times,serif" color="black">
-          <%= order_time(@order.completed_at) if @order.completed_at %>
-        </td>
-      </tr>
-      <tr>
-        <td class="info" align="center" style=" font-size: 14px; letter-spacing: 2px; line-height: 1.3; text-align: center; text-transform: uppercase; ">
-          <font face="Georgia,"Times New Roman",Times,serif" color="black">
-            <%= Spree.t(:order_number, number: @order.number) %></font>
+  <tr>
+    <td class="info" align="center" style=" font-size: 14px; letter-spacing: 2px; line-height: 1.3; text-align: center; text-transform: uppercase; ">
+      <font face="Georgia,"Times New Roman",Times,serif" color="black">
+      Dir. <%= @order.ship_address.address1 +" "+@order.ship_address.address2%>
+      </font>
+    </td>
+  </tr>
+  <tr>
+    <td class="info" align="center" style=" font-size: 14px; letter-spacing: 2px; line-height: 1.3; text-align: center; text-transform: uppercase; ">
+      <font face="Georgia,"Times New Roman",Times,serif" color="black">
+      <%= order_time(@order.completed_at) if @order.completed_at %>
+      </font>
+    </td>
+  </tr>
+  <tr>
+    <td class="info" align="center" style=" font-size: 14px; letter-spacing: 2px; line-height: 1.3; text-align: center; text-transform: uppercase; ">
+      <font face="Georgia,"Times New Roman",Times,serif" color="black">
+        <%= Spree.t(:order_number, number: @order.number) %>
+      </font>
     </td>
   </tr>
 </table>

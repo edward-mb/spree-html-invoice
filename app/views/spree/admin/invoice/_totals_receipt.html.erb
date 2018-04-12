@@ -1,10 +1,10 @@
 <table cellspacing="0" cellpadding="4" border="0" class="line_items" style="border:solid 1px #cccccc; border-bottom:none;" >
-  <% !@order.all_adjustments.empty? do %>
+  <% if @order.all_adjustments.any? -%>
   <tr>
     <td class="cel1 bold"><%= t(:item_total) %>: </td>
     <td class="cel2 bold cell" align="right"><%= @order.display_item_total.to_html %></td>
   </tr>
-  <% end %>
+  <% end -%>
   <% @order.all_adjustments.eligible.each do |adjustment| %>
   <tr class="total">
     <td class="cel1 bold" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%= adjustment.label %>:</font></td>

@@ -7,7 +7,7 @@
     <col class="total"/>
   </colgroup>
   <tr>
-    <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="price bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:price) unless @receipt%></font></th>
+    <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="price bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:price) %></font></th>
     <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="qty bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:qty) %> </font></th>
     <th align="right" bgcolor="#cccccc" style="background:#cccccc;" class="total bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:total) %></font></th>
   </tr>
@@ -15,8 +15,8 @@
     <tr>
       <td colspan="3" class="cell"><font face="Arial, Helvetica, sans-serif" size="2"><%= item.variant.product.fullname rescue item.variant.product.name %></font></td>
     </tr>
-    <tr>
-      <td colspan="3" class="cell"><font face="Arial, Helvetica, sans-serif" size="2"><%=item.variant.sku %></font></td>
+    <tr style="padding-bottom: 0px;">
+      <td colspan="3" class="cell" style="padding-bottom: 0px;"><font face="Arial, Helvetica, sans-serif" size="2"><%=item.variant.sku %></font></td>
     </tr>
     <tr >
       <td class="cell price" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=number_to_currency(item.price) %></font></td>

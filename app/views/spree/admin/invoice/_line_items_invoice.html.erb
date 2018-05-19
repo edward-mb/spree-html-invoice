@@ -9,19 +9,20 @@
   <tr>
     <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="price bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:price) %></font></th>
     <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="qty bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:qty) %> </font></th>
-    <th> </th>
+    <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="bold"> </th>
     <th align="right" bgcolor="#cccccc" style="background:#cccccc;" class="total bold"><font face="Arial, Helvetica, sans-serif" size="2">Monto</font></th>
   </tr>
   <% @order.line_items.each do |item| %>
-    <tr>
-      <td colspan="3" class="cell"><font face="Arial, Helvetica, sans-serif" size="2"><%= item.variant.product.fullname rescue item.variant.product.name %></font></td>
-    </tr>
     <tr style="padding-bottom: 0px;">
-      <td colspan="3" class="cell" style="padding-bottom: 0px;"><font face="Arial, Helvetica, sans-serif" size="2"><%=item.variant.sku %></font></td>
+      <td colspan="3" class="cell" style="padding-bottom: 0px;"><font face="Arial, Helvetica, sans-serif" size="2"><%= item.variant.product.fullname rescue item.variant.product.name %></font></td>
+    </tr>
+    <tr>
+      <td colspan="3" class="cell"><font face="Arial, Helvetica, sans-serif" size="2"><%=item.variant.sku %></font></td>
     </tr>
     <tr >
       <td class="cell price" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=number_to_currency(item.price) %></font></td>
-      <td class="cell qty" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=item.quantity %></font></td>
+      <td  align="center" class="cell qty" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=item.quantity %></font></td>
+      <td> </td>
       <td align="right" class="cell total" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=number_to_currency(item.price * item.quantity) %></font></td>
     </tr>
     <% if item.respond_to? :discount and item.discount > 0 %>

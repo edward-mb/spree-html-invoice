@@ -23,16 +23,16 @@
     </td>
   </tr>
   <tr>
-    <td class="info" align="center" style=" font-size: 15px; letter-spacing: 2px; line-height: 1.3; text-align: center; text-transform: uppercase; ">
+    <td class="info" align="center" style=" font-size: 18px; letter-spacing: 2px; line-height: 1.4; text-align: center; text-transform: uppercase; ">
       <font face="Georgia,"Times New Roman",Times,serif" color="black">
-      <%= order_time(@order.completed_at) if @order.completed_at %>
+        <%= Spree.t(:order_number, number: @order.number) %>
       </font>
     </td>
   </tr>
   <tr>
-    <td class="info" align="center" style=" font-size: 15px; letter-spacing: 2px; line-height: 1.3; text-align: center; text-transform: uppercase; ">
+    <td class="info" align="center" style=" font-size: 15px; letter-spacing: 2px; line-height: 1.5; text-align: center; text-transform: uppercase; ">
       <font face="Georgia,"Times New Roman",Times,serif" color="black">
-        <%= Spree.t(:order_number, number: @order.number) %>
+      <%= order_time(@order.completed_at) if @order.completed_at %>
       </font>
     </td>
   </tr>

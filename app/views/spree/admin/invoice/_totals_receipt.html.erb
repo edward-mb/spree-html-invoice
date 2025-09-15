@@ -1,16 +1,14 @@
 <table cellspacing="0" cellpadding="4" border="0" class="line_items" style="border:solid 1px #cccccc; border-bottom:none;" >
-  <% if @order.all_adjustments.any? -%>
+  <% iva = @order.total*0.16 %>
+  <% total_sinIVA = @order.total - iva  %>
   <tr>
     <td class="cel1 bold"><%= t(:item_total) %>: </td>
-    <td class="cel2 bold cell" align="right"><%= @order.display_item_total.to_html %></td>
+    <td class="cel2 bold cell" align="right"><%= number_to_currency total_sinIVA %></td>
   </tr>
-  <% end -%>
-  <% @order.all_adjustments.eligible.each do |adjustment| %>
   <tr class="total">
-    <td class="cel1 bold" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%= adjustment.label %>:</font></td>
-    <td class="cel2 cell" align="right" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%= adjustment.display_amount.to_html %></font></td>
+    <td class="cel1 bold" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2">IVA:</font></td>
+    <td class="cel2 cell" align="right" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%= number_to_currency iva %></font></td>
   </tr>
-  <% end %>
   <tr>
     <td class="cel1 bold" style="border-bottom:solid 1px #cccccc;"><strong><%= t(:order_total) %>:</strong></td>
     <td class="cel2 cell" align="right" style="border-bottom:solid 1px #cccccc;"><strong><span id='summary-order-total'><%= number_to_currency @order.total %></span></strong></td>

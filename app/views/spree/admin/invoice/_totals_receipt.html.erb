@@ -1,8 +1,15 @@
-<table cellspacing="0" cellpadding="4" border="0" class="line_items" style="border:solid 1px #cccccc; border-bottom:none;" >
-  <% iva = @order.total*0.16 %>
-  <% total_sinIVA = @order.total - iva  %>
+<table
+  cellspacing="0"
+  cellpadding="4"
+  border="0"
+  class="line_items"
+  style="border:solid 1px #cccccc; border-bottom:none;"
+>
+  <% iva = @order.total * 0.16 %>
+  <% total_sinIVA = @order.total - iva %>
   <tr>
-    <td class="cel1 bold"><%= t(:item_total) %>: </td>
+    <td class="cel1 bold"><%= t(:item_total) %>:
+    </td>
     <td class="cel2 bold cell" align="right"><%= number_to_currency total_sinIVA %></td>
   </tr>
   <tr class="total">

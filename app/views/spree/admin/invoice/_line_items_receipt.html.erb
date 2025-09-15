@@ -1,6 +1,16 @@
-<% garantias = {90 => "(Garantía 90 días)", 30 => "(Garantía 30 días)", 0 => "(Sin garantía)"} %>
+<% garantias = {
+  90 => "(Garantía 90 días)",
+  30 => "(Garantía 30 días)",
+  0 => "(Sin garantía)",
+} %>
 
-<table cellspacing="0" cellpadding="4" border="0" class="line_items" style="border:solid 1px #cccccc; border-bottom:none; margin:5px 0;" >
+<table
+  cellspacing="0"
+  cellpadding="4"
+  border="0"
+  class="line_items"
+  style="border:solid 1px #cccccc; border-bottom:none; margin:5px 0;"
+>
   <colgroup>
     <col/>
     <col/>
@@ -9,56 +19,91 @@
     <col class="total"/>
   </colgroup>
   <tr>
-    <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="price bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:price) %></font></th>
-    <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="qty bold"><font face="Arial, Helvetica, sans-serif" size="2">Cantidad</font></th>
-    <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="bold"> </th>
-    <th align="right" bgcolor="#cccccc" style="background:#cccccc;" class="total bold"><font face="Arial, Helvetica, sans-serif" size="2">Monto</font></th>
+    <th
+      align="left"
+      bgcolor="#cccccc"
+      style="background:#cccccc;"
+      class="price bold"
+    ><font face="Arial, Helvetica, sans-serif" size="3"><%= Spree.t(:price) %></font></th>
+    <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="qty bold"><font face="Arial, Helvetica, sans-serif" size="3">Cantidad</font></th>
+    <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="bold">
+    </th>
+    <th
+      align="right"
+      bgcolor="#cccccc"
+      style="background:#cccccc;"
+      class="total bold"
+    ><font face="Arial, Helvetica, sans-serif" size="3">Monto</font></th>
   </tr>
   <% @order.line_items.each do |item| %>
     <tr style="padding-bottom: 0px;">
       <td colspan="4" class="cell" style="padding-bottom: 0px;">
-        <font face="Arial, Helvetica, sans-serif" size="2">
-          <%= item.variant.product.fullname rescue item.variant.product.name %>
+        <font face="Arial, Helvetica, sans-serif" size="3">
+          <%= begin
+            item.variant.product.fullname
+          rescue StandardError
+            item.variant.product.name
+          end %>
         </font>
         <br>
-        <font face="Arial, Helvetica, sans-serif" size="1">
-          <%= item.garantia?  ? garantias[item.garantia.to_i] : garantias[item.price < 100 ? 0 : 30]  %>
+        <font face="Arial, Helvetica, sans-serif" size="2">
+          <%= if item.garantia?
+            garantias[item.garantia.to_i]
+          else
+            garantias[item.price < 100 ? 0 : 30]
+          end %>
         </font>
       </td>
     </tr>
     <tr>
-      <td colspan="3" class="cell"><font face="Arial, Helvetica, sans-serif" size="2"><%=item.variant.sku %></font></td>
+      <td colspan="3" class="cell"><font face="Arial, Helvetica, sans-serif" size="3"><%= item.variant.sku %></font></td>
     </tr>
-    <tr >
-      <td class="cell price" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=number_to_currency(item.price) %></font></td>
-      <td  align="center" class="cell qty" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=item.quantity %></font></td>
-      <td class="cell" style="border-bottom:solid 1px #cccccc;"> </td>
-      <td align="right" class="cell total" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=number_to_currency(item.price * item.quantity) %></font></td>
+    <tr>
+      <td class="cell price" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="3"><%= number_to_currency(item.price) %></font></td>
+      <td align="center" class="cell qty" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="3"><%= item.quantity %></font></td>
+      <td class="cell" style="border-bottom:solid 1px #cccccc;">
+      </td>
+      <td align="right" class="cell total" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="3"><%= number_to_currency(item.price * item.quantity) %></font></td>
     </tr>
     <% if item.respond_to? :discount and item.discount > 0 %>
-       <tr style="border-bottom:solid 1px #cccccc;">
-        <td class="cell" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2">&nbsp;</font></td>
-        <td class="cell" style="border-bottom:solid 1px #cccccc;">(<font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:discount) %>)</font></td>
-        <td class="cell price" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=number_to_currency(-1 * item.discount) %></font></td>
-        <td class="cell qty" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2">&nbsp;</font></td>
-        <td class="cell total" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=number_to_currency(-1 * item.discount * item.quantity) %></font></td>
+      <tr style="border-bottom:solid 1px #cccccc;">
+        <td class="cell" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;</font></td>
+        <td class="cell" style="border-bottom:solid 1px #cccccc;">(<font face="Arial, Helvetica, sans-serif" size="3"><%= Spree.t(:discount) %>)</font></td>
+        <td class="cell price" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="3"><%= number_to_currency(-1 * item.discount) %></font></td>
+        <td class="cell qty" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="3">&nbsp;</font></td>
+        <td class="cell total" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="3"><%= number_to_currency(-1 * item.discount * item.quantity) %></font></td>
       </tr>
     <% end %>
   <% end %>
 </table>
 <% if @order.adjustments.any? %>
-<table cellspacing="0" cellpadding="4" border="0" class="line_items" style="border:solid 1px #cccccc; border-bottom:none; margin:5px 0;" >
-  <tr>
-    <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="bold"><font face="Arial, Helvetica, sans-serif" size="2"> Razón </font></th>
-    <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="bold"> </th>
-    <th align="right" bgcolor="#cccccc" style="background:#cccccc;" class="total bold"><font face="Arial, Helvetica, sans-serif" size="2">Monto</font></th>
-  </tr>
-  <% @order.adjustments.each do |ajuste| %>
-  <tr >
-    <td class="cell" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%= ajuste.label %></font></td>
-    <td class="cell" style="border-bottom:solid 1px #cccccc;"> </td>
-    <td align="right" class="cell total" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=number_to_currency(ajuste.amount) %></font></td>
-  </tr>
-  <% end %>
-</table>
+  <table
+    cellspacing="0"
+    cellpadding="4"
+    border="0"
+    class="line_items"
+    style="border:solid 1px #cccccc; border-bottom:none; margin:5px 0;"
+  >
+    <tr>
+      <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="bold"><font face="Arial, Helvetica, sans-serif" size="3">
+          Razón
+        </font></th>
+      <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="bold">
+      </th>
+      <th
+        align="right"
+        bgcolor="#cccccc"
+        style="background:#cccccc;"
+        class="total bold"
+      ><font face="Arial, Helvetica, sans-serif" size="3">Monto</font></th>
+    </tr>
+    <% @order.adjustments.each do |ajuste| %>
+      <tr>
+        <td class="cell" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="3"><%= ajuste.label %></font></td>
+        <td class="cell" style="border-bottom:solid 1px #cccccc;">
+        </td>
+        <td align="right" class="cell total" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="3"><%= number_to_currency(ajuste.amount) %></font></td>
+      </tr>
+    <% end %>
+  </table>
 <% end %>
